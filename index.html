@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shella Aldi Firdiansah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-muted: #5a5a5a;
+    --ink-faint: #9a9a9a;
+    --surface: #ffffff;
+    --surface-alt: #f7f6f4;
+    --border: #e5e4e0;
+    --accent: #1a1a1a;
+    --accent-light: #f0efec;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--ink-muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* SECTIONS */
+  section { padding: 6rem 2rem; max-width: 760px; margin: 0 auto; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 4rem;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--ink-muted);
+  }
+
+  .hero-tagline {
+    font-size: 1.125rem;
+    color: var(--ink-muted);
+    max-width: 480px;
+    line-height: 1.65;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1.4rem;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .btn-primary:hover { background: #333; }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--border);
+  }
+
+  .btn-outline:hover { background: var(--surface-alt); }
+
+  .hero-scroll {
+    margin-top: 5rem;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-scroll::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* SECTION HEADER */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    color: var(--ink-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .stat-item {
+    border-left: 2px solid var(--ink);
+    padding-left: 1rem;
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .project-card {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+  }
+
+  .project-card:first-child { border-top: 1px solid var(--border); }
+
+  .project-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.875rem;
+    color: var(--ink-faint);
+    font-style: italic;
+    padding-top: 3px;
+  }
+
+  .project-content {}
+
+  .project-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    background: var(--surface-alt);
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+
+  .project-desc {
+    font-size: 0.875rem;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .project-meta {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .project-impact {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .project-impact-label {
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+
+  /* ACHIEVEMENTS */
+  .achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .achievement-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .achievement-item:first-child { border-top: 1px solid var(--border); }
+
+  .achievement-year {
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+    width: 36px;
+  }
+
+  .achievement-name {
+    font-size: 0.9375rem;
+    color: var(--ink);
+    font-weight: 500;
+    flex: 1;
+  }
+
+  .achievement-org {
+    font-size: 13px;
+    color: var(--ink-faint);
+    font-weight: 400;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .achievement-badge {
+    font-size: 11px;
+    color: var(--ink);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* CONTACT */
+  .contact-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .contact-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    max-width: 380px;
+  }
+
+  .contact-headline em { font-style: italic; color: var(--ink-muted); }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-end;
+  }
+
+  .contact-link {
+    font-size: 0.875rem;
+    color: var(--ink-muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--ink); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.25rem; }
+    #hero { padding: 100px 1.25rem 4rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 48px 1fr; }
+    .project-meta { display: none; }
+    .contact-links { align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">Aldi</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="padding: 0 2rem;">
+  <p class="hero-eyebrow">Strategy · Research · Consulting</p>
+  <h1 class="hero-name">Shella Aldi<br><em>Firdiansah</em></h1>
+  <p class="hero-tagline">Jakarta-based consultant and researcher turning complex market data into decisions that matter — across healthcare, manufacturing, FMCG, and beyond.</p>
+  <div class="hero-actions">
+    <a href="CV___Shella_Aldi_Firdiansah__Adjustable_MT.pdf" download class="btn btn-primary">Download CV</a>
+    <a href="https://www.linkedin.com/in/shella-aldi-firdiansah/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+    <a href="#contact" class="btn btn-outline">Get in touch</a>
+  </div>
+  <p class="hero-scroll">Scroll to explore</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">About</p>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a Senior Associate Consultant at Kiantara & Associate (PT Pinnacle Analytics Indonesia), working at the intersection of market research, strategy consulting, and business development.</p>
+      <p>With a Bachelor of Management from Universitas Airlangga (GPA 3.72) and two consecutive Bank Indonesia Scholarships, I bring both academic rigor and hands-on field experience to every engagement.</p>
+      <p>I've led research across 6 cities, managed C-suite presentations, and self-originated two client wins — all while maintaining 100% on-time delivery across 3-4 concurrent projects.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-item">
+        <div class="stat-number">1,700+</div>
+        <div class="stat-label">Survey respondents, single project</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">6</div>
+        <div class="stat-label">Cities covered in field research</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">$50M+</div>
+        <div class="stat-label">Investment decision supported</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">200+</div>
+        <div class="stat-label">SOPs designed across 12 departments</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Featured projects</p>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-number">01</div>
+      <div class="project-content">
+        <span class="project-tag">Market Research · Quantitative</span>
+        <div class="project-title">National Fuel Economy Study — WRI</div>
+        <div class="project-desc">Led full project lifecycle for a national-scale survey across Jabodetabek, Bandung, Semarang, Surabaya, Medan, and Makassar. Managed enumerator teams, instrument design, field operations, and C-suite presentation for a bilateral research initiative.</div>
+      </div>
+      <div class="project-meta">
+        <div class="project-impact">1,700</div>
+        <div class="project-impact-label">respondents · 6 cities</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">02</div>
+      <div class="project-content">
+        <span class="project-tag">Qualitative Research · Self-Originated</span>
+        <div class="project-title">Electric Motorcycle FGD — ALVA</div>
+        <div class="project-desc">Self-originated and pitched the engagement. Recruited 80 OJOL driver respondents across Jabodetabek and Bandung. Designed FGD guide, led sessions, performed analysis, and delivered findings directly to client leadership.</div>
+      </div>
+      <div class="project-meta">
+        <div class="project-impact">80</div>
+        <div class="project-impact-label">respondents · self-won</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">03</div>
+      <div class="project-content">
+        <span class="project-tag">Strategy · Market Entry</span>
+        <div class="project-title">Market Entry Feasibility — Multinational Fiber Optic Manufacturer</div>
+        <div class="project-desc">Developed full market entry strategy including competitive landscape, regulatory mapping, PESTLE analysis, financial modeling, and tax assessment. Output fed directly into a C-suite investment recommendation deck.</div>
+      </div>
+      <div class="project-meta">
+        <div class="project-impact">$50M+</div>
+        <div class="project-impact-label">decision supported</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">04</div>
+      <div class="project-content">
+        <span class="project-tag">Brand Strategy · Healthcare</span>
+        <div class="project-title">Brand Repositioning — Leading Private Hospital Chain</div>
+        <div class="project-desc">Led end-to-end patient research across 5 cities with 14 enumerators and 500+ respondents. Delivered consumer insights in an executive-ready deck to support premium brand repositioning strategy for the hospital's executive team.</div>
+      </div>
+      <div class="project-meta">
+        <div class="project-impact">500+</div>
+        <div class="project-impact-label">respondents · 5 cities</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">05</div>
+      <div class="project-content">
+        <span class="project-tag">Operations · Process Design</span>
+        <div class="project-title">Organizational SOP Design — NGO Client (JCG)</div>
+        <div class="project-desc">Created 60+ business processes, 120+ policies, and 200+ SOPs across 12 departments for an NGO client. Facilitated 15+ stakeholder interviews and implemented structured performance frameworks adopted organization-wide.</div>
+      </div>
+      <div class="project-meta">
+        <div class="project-impact">200+</div>
+        <div class="project-impact-label">SOPs · 12 dept.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <p class="section-label">Achievements</p>
+  <div class="achievements-list">
+
+    <div class="achievement-item">
+      <div class="achievement-year">2024</div>
+      <div class="achievement-name">
+        Bank Indonesia Scholarship
+        <span class="achievement-org">Bank Indonesia · Universitas Airlangga</span>
+      </div>
+      <div class="achievement-badge">2nd consecutive year</div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-year">2024</div>
+      <div class="achievement-name">
+        2nd Winner — HTC Intern Project
+        <span class="achievement-org">Home Tester Club</span>
+      </div>
+      <div class="achievement-badge">Runner-up</div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-year">2024</div>
+      <div class="achievement-name">
+        Top 10 — WOW Marketing Case Competition
+        <span class="achievement-org">Markplus</span>
+      </div>
+      <div class="achievement-badge">Top 10 national</div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-year">2023</div>
+      <div class="achievement-name">
+        Bank Indonesia Scholarship
+        <span class="achievement-org">Bank Indonesia · Universitas Airlangga</span>
+      </div>
+      <div class="achievement-badge">Awardee</div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-year">2023</div>
+      <div class="achievement-name">
+        2nd Winner — Colegacy Business Case Competition
+        <span class="achievement-org">Colegacy Indonesia</span>
+      </div>
+      <div class="achievement-badge">Runner-up</div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-year">2022</div>
+      <div class="achievement-name">
+        2nd Place — Paradigm Business Case Competition
+        <span class="achievement-org">Universitas Padjajaran</span>
+      </div>
+      <div class="achievement-badge">Runner-up</div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-year">2022</div>
+      <div class="achievement-name">
+        Best Innovation — Sinergitas MBKM
+        <span class="achievement-org">Program Padat Karya Surabaya</span>
+      </div>
+      <div class="achievement-badge">Best Innovation</div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Contact</p>
+  <div class="contact-inner">
+    <h2 class="contact-headline">Let's work<br><em>together.</em></h2>
+    <div class="contact-links">
+      <a href="mailto:aldifirdiansah0207@gmail.com" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        aldifirdiansah0207@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/shella-aldi-firdiansah/" target="_blank" rel="noopener" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        linkedin.com/in/shella-aldi-firdiansah
+      </a>
+      <a href="tel:+6285853793776" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +62 858 5379 3776
+      </a>
+      <a href="CV___Shella_Aldi_Firdiansah__Adjustable_MT.pdf" download class="btn btn-primary" style="margin-top: 0.5rem;">Download CV</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Shella Aldi Firdiansah · Jakarta, Indonesia · 2026</p>
+</footer>
+
+</body>
+</html>
